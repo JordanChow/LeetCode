@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool isMonotonic(vector<int>& vector1) {
+    bool inc = true, dec = true;
+
+    for(int index = 0; index < vector1.size()-1 && (inc == true || dec == true); index++)
+    {
+        if(vector1[index] > vector1[index+1])
+            inc = false;
+        
+        if(vector1[index] < vector1[index+1])
+            dec = false;
+    }
+    return inc || dec;
+}        
+};
