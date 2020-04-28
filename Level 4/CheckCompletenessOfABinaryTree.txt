@@ -1,0 +1,23 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def isCompleteTree(self, root: TreeNode) -> bool:
+        if not root: return True
+        
+        stack = [root]
+        i = 0
+        while i < len(stack):
+            if stack[i]:
+                stack.extend([stack[i].left, stack[i].right])   
+            i += 1
+                                
+        for x in range(len(stack)-1):               
+            if stack[x] is None and stack[x+1] is not None:
+                return False
+
+        return True 
